@@ -86,6 +86,11 @@ fdss_trace_init(void)
 		name = bfd_asymbol_name(sym);
 		section = bfd_get_section_name(abfd, bfd_get_section(sym));
 
+		/*
+		 * XXX:use switch to check sym->flags
+		 * add variable breakpoint, make it event-driven
+		 * sym->flags & BSF_GLOBAL
+		 */
 		if (addr == 0 || !(sym->flags & BSF_FUNCTION))
 			/* sym is not a function */
 			continue;
